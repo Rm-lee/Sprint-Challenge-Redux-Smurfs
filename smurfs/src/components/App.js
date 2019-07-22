@@ -20,6 +20,13 @@ class App extends Component {
   componentDidMount(){
     this.props.getSmurf()
   }
+  handleChange = (e) => {
+    e.preventDefault()
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+    
+  }
   render() {
     return (
       <div className="App">
