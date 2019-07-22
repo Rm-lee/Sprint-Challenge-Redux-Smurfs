@@ -1,3 +1,4 @@
+import axios from 'axios'
 export const ADDSMURF = "ADDSMURF"
 export const GETSMURF = "GETSMURF"
 
@@ -12,7 +13,11 @@ export const GETSMURF = "GETSMURF"
 
 export function getSmurf() {
   return (dispatch) => {
-    dispatch({type: GETSMURF})
+    axios.get('http://localhost:3333/smurfs/')
+    .then((response) => {
+     dispatch({type: GETSMURF, payload:response.data})
+    })
+   
     
   }
 }

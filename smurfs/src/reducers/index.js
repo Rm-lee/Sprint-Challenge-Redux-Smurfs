@@ -1,4 +1,4 @@
-import { GETSMURF, ADDSMURF } from './actions/index.js'
+import { GETSMURF, ADDSMURF } from '../actions/index'
 
 /*
   Be sure to import in all of the action types from `../actions`
@@ -26,9 +26,14 @@ const initialState =
 export default function(state = initialState, action) {
   switch (action.type){
     case GETSMURF:{
-      retr
+      console.log(action.payload)
+      return {
+        ...state, 
+        smurfs: action.payload
+      }
     }
-
+    default:
+      return state
 
 
   }
