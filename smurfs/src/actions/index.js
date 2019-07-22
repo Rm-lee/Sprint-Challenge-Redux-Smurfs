@@ -21,6 +21,16 @@ export function getSmurf() {
     
   }
 }
+
+
+export function addsmurf(){
+  return(dispatch) => {
+    axios.post('http://localhost:3333/smurfs/')
+    .then((response) => {
+      dispatch({type: ADDSMURF, payload:response.data})
+    })
+  }
+}
 /*
   For this project you'll need at least 2 action creators for the main portion,
    and 2 more for the stretch problem.
