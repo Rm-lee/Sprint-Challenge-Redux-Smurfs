@@ -17,17 +17,21 @@ export function getSmurf() {
     .then((response) => {
      dispatch({type: GETSMURF, payload:response.data})
     })
-   
-    
+    .catch((err) => {
+      console.log(err)
+   })
   }
 }
 
 
-export function addsmurf(){
+export function addsmurf(newsmurf){
   return(dispatch) => {
-    axios.post('http://localhost:3333/smurfs/')
+    axios.post('http://localhost:3333/smurfs/', newsmurf)
     .then((response) => {
       dispatch({type: ADDSMURF, payload:response.data})
+    })
+    .catch((err) => {
+       console.log(err)
     })
   }
 }

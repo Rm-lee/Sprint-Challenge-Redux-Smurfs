@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import {getSmurf} from '../actions/index'
+import {getSmurf, addsmurf} from '../actions/index'
 import './App.css';
 /*
  to wire this component up you're going to need a few things.
@@ -14,7 +14,7 @@ class App extends Component {
     this.state = {
       name:'',
       age:'',
-      heigth:''
+      height:''
     }
   }
   componentDidMount(){
@@ -26,6 +26,19 @@ class App extends Component {
       [e.target.name]: e.target.value
     })
     
+  }
+
+
+  submitHandler = (e) => {
+    e.preventDefault()
+    const {name,age,height} = this.state
+    const newsmurf = {
+      name,
+      age,
+      height
+    }
+    this.props.addsmurf(newsmurf)
+
   }
   render() {
     return (
@@ -55,7 +68,8 @@ const mapStateToProps = (state) => {
   }
 }
 const mapDispatchToProps = {
-  getSmurf:getSmurf
+  getSmurf:getSmurf,
+  addsmurf:addsmurf
 }
 export default connect(
 	mapStateToProps,
