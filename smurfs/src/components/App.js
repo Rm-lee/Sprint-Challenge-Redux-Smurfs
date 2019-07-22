@@ -43,18 +43,18 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {this.props.smurfs.map( smurf => (
-       <div style={smurfInfo}>
+        {this.props.smurfs.map( (smurf,index) => (
+       <div key={index} style={smurfInfo}>
          <p>Smurf name: {smurf.name}</p>
          <p>Smurf age: {smurf.age}</p>
          <p>Smurf height: {smurf.height}</p>
        </div>
      ))}
 
-<form onSubmit={this.submitHandler}>
-					<input type="text" name="name" placeholder="name" value={this.state.name} onChange={this.handleChange} />
-          <input type="text" name="age" placeholder="age" value={this.state.age} onChange={this.handleChange} />
-          <input type="text" name="height" placeholder="height" value={this.state.height} onChange={this.handleChange} />
+        <form onSubmit={this.submitHandler}>
+					<input type="text" name="name" placeholder="name" value={this.state.name} onChange={this.handleChange} /> <br/>
+          <input type="text" name="age" placeholder="age" value={this.state.age} onChange={this.handleChange} /><br/>
+          <input type="text" name="height" placeholder="height" value={this.state.height} onChange={this.handleChange} /><br/>
 					<button type="submit">add smurf</button>
 				</form>
       </div>
@@ -62,7 +62,6 @@ class App extends Component {
   }
 }
 const mapStateToProps = (state) => {
-  console.log(state)
   return {
     smurfs: state.smurfs
   }
@@ -77,5 +76,7 @@ export default connect(
 )(App)
 
 const smurfInfo = {
-
+  boxShadow:' 4px 2px 15px #cdcdcd',
+  margin:'10px',
+  padding:'10px',
 }
